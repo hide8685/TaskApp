@@ -14,6 +14,7 @@ import android.app.PendingIntent
 const val EXTRA_TASK = "jp.hideyukihosaka.taskapp.TASK"
 
 class MainActivity : AppCompatActivity() {
+
     private lateinit var mRealm: Realm
     private val mRealmListener = object : RealmChangeListener<Realm> {
         override fun onChange(element: Realm) {
@@ -90,6 +91,8 @@ class MainActivity : AppCompatActivity() {
 
         reloadListView()
     }
+
+
 
     private fun reloadListView() {
         // Realmデータベースから、「すべてのデータを取得して新しい日時順に並べた結果」を取得
