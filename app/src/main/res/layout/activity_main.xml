@@ -11,10 +11,29 @@
     tools:context=".MainActivity">
 
 
-    <ListView
-        android:id="@+id/listView1"
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <EditText
+            android:id="@+id/category_select_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="検索したいグループ名" />
+        <Button
+            android:id="@+id/category_select_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="検索" />
+
+        <ListView
+            android:id="@+id/listView1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+        </LinearLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"

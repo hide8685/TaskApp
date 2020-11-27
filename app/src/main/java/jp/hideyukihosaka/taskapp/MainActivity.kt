@@ -10,6 +10,7 @@ import android.content.Intent
 import androidx.appcompat.app.AlertDialog
 import android.app.AlarmManager
 import android.app.PendingIntent
+import android.util.Log
 
 const val EXTRA_TASK = "jp.hideyukihosaka.taskapp.TASK"
 
@@ -89,14 +90,22 @@ class MainActivity : AppCompatActivity() {
             true
         }
 
+        category_select_button.setOnClickListener(){
+            reloadListView()
+        }
+
         reloadListView()
     }
 
 
 
     private fun reloadListView() {
+        val select_category = category_select_text.text.toString()
         // Realmデータベースから、「すべてのデータを取得して新しい日時順に並べた結果」を取得
-        val taskRealmResults = mRealm.where(Task::class.java).findAll().sort("date", Sort.DESCENDING)
+        val taskRealmResults = mRealm.where(Task::class.java)
+            .like("category", "*$select_category*")
+            .findAll()
+            .sort("date", Sort.DESCENDING)
 
         // 上記の結果を、TaskListとしてセットする
         mTaskAdapter.taskList = mRealm.copyFromRealm(taskRealmResults)
